@@ -12,11 +12,11 @@ const { developmentChains } = require("../../helper-hardhat-config")
           let basicNft, deployer, basicNftContract, contract
 
           beforeEach(async () => {
-              //   accounts = await ethers.getSigners()
-              //   deployer = accounts[1]
-              //   contract = await deployments.fixture(["basicnft"])
-              //   basicNftContract = await ethers.getContract("BasicNft")
-              //   basicNft = await basicNftContract.connect(deployer)
+              accounts = await ethers.getSigners()
+              deployer = accounts[1]
+              contract = await deployments.fixture(["basicnft"])
+              basicNftContract = await ethers.getContract("BasicNft")
+              basicNft = await basicNftContract.connect(deployer)
           })
 
           describe("Constructor", () => {
@@ -32,17 +32,17 @@ const { developmentChains } = require("../../helper-hardhat-config")
           //test02
           describe("Mint NFT", () => {
               beforeEach(async () => {
-                  accounts = await ethers.getSigners()
-                  deployer = accounts[0]
-                  await deployments.fixture(["basicnft"])
+                  //   accounts = await ethers.getSigners()
+                  //   deployer = accounts[0]
+                  //   await deployments.fixture(["basicnft"])
                   // basicNftContract = await ethers.getContract("BasicNft")
                   // basicNft = await basicNftContract.connect(deployer)
-                  basicNftContract = new ethers.Contract(
-                      "0x5FbDB2315678afecb367f032d93F642f64180aa3",
-                      "BasicNft",
-                      deployer
-                  )
-                  basicNft = await basicNftContract.connect(deployer)
+                  //   basicNftContract = new ethers.Contract(
+                  //       "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+                  //       "BasicNft",
+                  //       deployer
+                  //   )
+                  //   basicNft = await basicNftContract.connect(deployer)
                   const txResponse = await basicNft.mintNft()
                   await txResponse.wait(1)
               })
